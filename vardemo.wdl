@@ -13,17 +13,16 @@ task doVariantWorkflow {
 		geneid <- select(org.Hs.eg.db, keys=genesym, keytype='SYMBOL', \
 		         columns='ENTREZID'); \
 		txdb <- TxDb.Hsapiens.UCSC.hg19.knownGene; \
-		txdb <- renameSeqlevels(txdb, gsub('chr', '', seqlevels(txdb))); \
+		seqlevelsStyle(txdb) = "NCBI"; \
 		txdb <- keepSeqlevels(txdb, '17'); \
 		txbygene = transcriptsBy(txdb, 'gene'); \
-		gnrng <- unlist(range(txbygene[geneid$ENTREZID]), use.names=FALSE); \
-		names(gnrng) <- geneid$SYMBOL; \
+		gnrng <- unlist(range(txbygene[geneid[['ENTREZID']]]), use.names=FALSE); \
+		names(gnrng) <- geneid[['SYMBOL']]; \
 		param <- ScanVcfParam(which = gnrng, info = 'DP', geno = c('GT', 'cPd')); \
 		vcf <- readVcf(file, 'hg19', param); \
 		ans = locateVariants(vcf, txdb, AllVariants()); \
-		table(ans$LOCATION); \
+		table(mcols(ans)[['LOCATION']]); \
                 write.csv(as.data.frame(ans), 'trpvar.csv');"
-		
   }
   runtime {
     docker: "bioconductor/devel_core2"
