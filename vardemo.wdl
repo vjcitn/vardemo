@@ -11,7 +11,7 @@ task doVariantWorkflow {
 		geneid <- select(org.Hs.eg.db, keys=genesym, keytype='SYMBOL', \
 		         columns='ENTREZID'); \
 		txdb <- TxDb.Hsapiens.UCSC.hg19.knownGene; \
-		seqlevelsStyle(txdb) = "NCBI"; \
+		seqlevelsStyle(txdb) = 'NCBI'; \
 		txdb <- keepSeqlevels(txdb, '17'); \
 		txbygene = transcriptsBy(txdb, 'gene'); \
 		gnrng <- unlist(range(txbygene[geneid[['ENTREZID']]]), use.names=FALSE); \
