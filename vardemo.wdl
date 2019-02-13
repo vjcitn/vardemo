@@ -23,6 +23,6 @@ task doVariantWorkflow {
                 write.csv(as.data.frame(ans), 'trpvar.csv');"
   }
   runtime {
-    docker: "bioconductor/devel_core2"
+    docker: "waldronlab/bioconductor_devel"
     }
 }
