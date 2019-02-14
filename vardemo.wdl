@@ -23,6 +23,6 @@ task doVariantWorkflow {
                 write.csv(as.data.frame(ans), 'trpvar.csv');"
   }
   runtime {
-    docker: "reshg/leonardo-rstudio"
+    docker: "reshg/leonardo-rstudio:v1"
     }
 }
