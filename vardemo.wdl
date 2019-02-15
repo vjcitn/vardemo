@@ -23,6 +23,6 @@ task doVariantWorkflow {
                 write.csv(as.data.frame(ans), 'trpvar.csv');"
   }
   runtime {
-    docker: "bioconductor/anvil-rstudio-bioc:3.9"
+    docker: "waldronlab/bioconductor_devel"
     }
 }
