@@ -4,7 +4,7 @@ workflow task1 {
 
 task doVariantWorkflow {
   command {
-    R -e "BiocManager::install('variants', version = '3.9', update=TRUE, ask=FALSE); \
+    R -e "BiocManager::install('variants', version = '3.8', update=TRUE, ask=FALSE); \
 		library('variants'); \
 		file <- system.file('vcf', 'NA06985_17.vcf.gz', package = 'cgdv17'); \
 		genesym <- c('TRPV1', 'TRPV2', 'TRPV3'); \
