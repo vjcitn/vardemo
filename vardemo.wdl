@@ -22,8 +22,9 @@ task doVariantWorkflow {
 		seqlevels(vcf)[25] = 'MT'; \
 		ans = locateVariants(vcf, txdb, AllVariants()); \
 		table(mcols(ans)[['LOCATION']]); \
+		names(ans) = make.names(names(ans), unique=TRUE); \
 		ans = as.data.frame(ans); \
-		rownames(ans) = NULL; \
+		rownames(ans) = make.names(rownames(ans), unique=TRUE); \
                 write.csv(ans, 'trpvar.csv');"
   }
   runtime {
