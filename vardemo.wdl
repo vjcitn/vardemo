@@ -22,7 +22,9 @@ task doVariantWorkflow {
 		seqlevels(vcf)[25] = 'MT'; \
 		ans = locateVariants(vcf, txdb, AllVariants()); \
 		table(mcols(ans)[['LOCATION']]); \
-                write.csv(as.data.frame(ans), 'trpvar.csv');"
+		ans = as.data.frame(ans); \
+		rownames(ans) = make.names(rownames(ans), unique=TRUE); \
+                write.csv(ans, 'trpvar.csv');"
   }
   runtime {
     docker: "waldronlab/bioconductor_release"
