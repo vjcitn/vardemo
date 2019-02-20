@@ -7,7 +7,7 @@ task doVariantWorkflow {
     R -e "BiocManager::install('variants', version = '3.8', update=TRUE, ask=FALSE); \
 		library('variants'); \
 		file <- system.file('vcf', 'NA06985_17.vcf.gz', package = 'cgdv17'); \
-		genesym <- "ORMDL3"; \
+		genesym <- 'ORMDL3'; \
 		geneid <- select(org.Hs.eg.db, keys=genesym, keytype='SYMBOL', \
 		         columns='ENTREZID'); \
 		txdb <- TxDb.Hsapiens.UCSC.hg19.knownGene; \
@@ -19,7 +19,7 @@ task doVariantWorkflow {
 		names(gnrng) <- geneid[['SYMBOL']]; \
 		param <- ScanVcfParam(which = gnrng+20000, info = 'DP', geno = c('GT', 'cPd')); \
 		vcf <- readVcf(file, 'hg19', param); \
-		seqlevels(vcf)[25] = "MT"; \
+		seqlevels(vcf)[25] = 'MT'; \
 		ans = locateVariants(vcf, txdb, AllVariants()); \
 		table(mcols(ans)[['LOCATION']]); \
                 write.csv(as.data.frame(ans), 'trpvar.csv');"
