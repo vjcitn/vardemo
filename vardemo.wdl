@@ -7,7 +7,7 @@ task doVariantWorkflow {
     R -e "BiocManager::install('variants', version = '3.8', update=TRUE, ask=FALSE); \
 		library('variants'); \
 		file <- system.file('vcf', 'NA06985_17.vcf.gz', package = 'cgdv17'); \
-		genesym <- c('TRPV1', 'TRPV2', 'TRPV3'); \
+		genesym <- "ORMDL3" \
 		geneid <- select(org.Hs.eg.db, keys=genesym, keytype='SYMBOL', \
 		         columns='ENTREZID'); \
 		txdb <- TxDb.Hsapiens.UCSC.hg19.knownGene; \
