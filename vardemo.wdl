@@ -28,6 +28,7 @@ task doVariantWorkflow {
                 write.csv(ans, 'trpvar.csv');"
   }
   runtime {
+    disks: "local-disk 40 HDD"
     docker: "waldronlab/bioconductor_devel"
     }
 }
