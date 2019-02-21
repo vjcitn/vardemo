@@ -29,6 +29,7 @@ task doVariantWorkflow {
   }
   runtime {
     disks: "local-disk 40 HDD"
+    bootDiskSizeGb: 50
     docker: "waldronlab/bioconductor_devel"
     }
 }
