@@ -27,6 +27,9 @@ task doVariantWorkflow {
 		rownames(ans) = make.names(rownames(ans), unique=TRUE); \
                 write.csv(ans, 'trpvar.csv');"
   }
+  output {
+      File out1 = "trpvar.csv"
+  }
   runtime {
     disks: "local-disk 40 HDD"
     bootDiskSizeGb: 50
